@@ -1,0 +1,19 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:composite="http://java.sun.com/jsf/composite">
+
+	<composite:interface>
+		<composite:attribute name="label" />
+		<composite:attribute name="value" />
+		<composite:attribute name="space" default="10" />
+	</composite:interface>
+	
+	<composite:implementation>
+		<p:outputLabel value="#{cc.attrs.label} : "></p:outputLabel>
+		<h:outputText style="color:navy;font-weight:bold" value="#{cc.attrs.value}"></h:outputText>
+		<p:spacer width="#{cc.attrs.space}"></p:spacer>
+	</composite:implementation>
+	  
+</html>

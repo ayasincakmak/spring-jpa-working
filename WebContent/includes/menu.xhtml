@@ -1,0 +1,541 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:thy="http://java.sun.com/jsf/composite/thy">
+
+     <ul class="sidebar-menu">
+        <li>
+            <p:link href="/index.xhtml" onclick="clearBreadCrumbs()">
+                <i class="fa fa-home"></i>
+                <span>Home</span>
+            </p:link>
+        </li>
+		<li class="treeview" style="display: 
+			#{accessBean.accessPaths('/whomtable/groups.xhtml',
+			'/whomtable/flight_class_restriction_test.xhtml',
+			'/whomtable/rules.xhtml')?'block':'none'}">
+        	<a href="#">
+                <i class="fa fa-hand-paper-o"></i>
+                <span>WHOM TABLE</span>
+                <span class="pull-right-container">
+                     <i class="fa fa-angle-left pull-right"></i>
+                </span>
+            </a>
+        	<ul class="treeview-menu">
+
+				<thy:menuitem label="Groups"
+					href="/whomtable/groups.xhtml" faclass="fa-hand-paper-o" />		        
+	        
+				<thy:menuitem label="Rules"
+					href="/whomtable/rules.xhtml" faclass="fa-hand-paper-o" />	  	        
+	        
+				<thy:menuitem label="Flight Restriction Test"
+					href="/whomtable/flight_class_restriction_test.xhtml" faclass="fa-hand-paper-o" />	  
+						        
+	        </ul>
+        </li>
+        
+        <!--  -->
+		<li class="treeview"
+			style="display: 
+			#{accessBean.accessPaths('/location/location.xhtml',
+			'/location/port_relative_all.xhtml',
+			'/location/port_interchangable_all.xhtml',
+			'/location/location_changes.xhtml')?'block':'none'}">
+        	<a href="#">
+                <i class="fa fa-map-marker"></i>
+                <span>LOCATION</span>
+                <span class="pull-right-container">
+                     <i class="fa fa-angle-left pull-right"></i>
+                </span>
+            </a>
+        	<ul class="treeview-menu">
+	        
+				<thy:menuitem label="Location"
+					href="/location/location.xhtml" faclass="fa-map-marker" />
+					
+				<thy:menuitem label="Location 2"
+					href="/location/location2.xhtml" faclass="fa-map-marker" />							  	        
+		        
+				<!----><thy:menuitem label="Yasaklı Portlar"
+					href="/location/port_relative_all.xhtml" faclass="fa-map-marker" />	        
+		        
+				<thy:menuitem label="Kardeş Portlar"
+					href="/location/port_interchangable_all.xhtml" faclass="fa-map-marker" />
+					
+				<thy:menuitem label="Location Changes"
+					href="/location/location_changes.xhtml" faclass="fa-map-marker" />				
+	        
+	        </ul>
+        </li>
+        
+        
+        <li class="treeview" style="display: 
+			#{accessBean.accessPaths('/mct/mct.xhtml',
+			'/mct/mct_changes.xhtml')?'block':'none'}"> 
+        	<a href="#">
+                <i class="fa fa-calendar"></i>
+                <span>MCT</span>
+                <span class="pull-right-container">
+                     <i class="fa fa-angle-left pull-right"></i>
+                </span>
+            </a>
+        	<ul class="treeview-menu">
+	        
+	        	<thy:menuitem label="MCT" 
+					href="/mct/mct.xhtml" faclass="fa-calendar" />
+
+				<thy:menuitem label="MCT Changes"
+					href="/mct/mct_changes.xhtml" faclass="fa-calendar" />	        
+	        
+   	        	<thy:menuitem label="MCT V 2" 
+					href="/mct/mct_v2.xhtml" faclass="fa-calendar" />
+					
+				<thy:menuitem label="MCT Search" 
+					href="/mct/mct_search.xhtml" faclass="fa-calendar" />					
+	        
+	        </ul>
+        </li>
+        
+        <li class="treeview" style="display: 
+			#{accessBean.accessPaths('/dst/dst.xhtml',
+			'/dst/dst_changes.xhtml')?'block':'none'}">
+        	<a href="#">
+                <i class="fa fa-calendar-o"></i>
+                <span>DST</span>
+                <span class="pull-right-container">
+                     <i class="fa fa-angle-left pull-right"></i>
+                </span>
+            </a>
+        	<ul class="treeview-menu">
+	        	<thy:menuitem label="DST" 
+					href="/dst/dst.xhtml" faclass="fa-calendar-o" />
+				<thy:menuitem label="DST Changes"
+					href="/dst/dst_changes.xhtml" faclass="fa-calendar-o" />
+	        </ul>
+        </li>   
+        
+ 
+        <li class="treeview" style="display: 
+			#{accessBean.accessPaths('/aircraft/aircraft.xhtml')?'block':'none'}">
+        	<a href="#">
+                <i class="fa fa-plane"></i>
+                <span>Aircraft</span>
+                <span class="pull-right-container">
+                     <i class="fa fa-angle-left pull-right"></i>
+                </span>
+            </a>
+        	<ul class="treeview-menu">
+	        	<thy:menuitem label="Aircrafts" 
+					href="/aircraft/aircrafts.xhtml" faclass="fa-plane" />
+				<!--  <thy:menuitem label="Aircraft Changes" 
+					href="/aircraft/aircraft_changes.xhtml" faclass="fa-calendar-o" />-->
+	        </ul>
+        </li>              
+        
+        <li class="treeview" style="display: 
+			#{accessBean.accessPaths('/facts/facts.xhtml',
+			'/facts/facts_changes.xhtml')?'block':'none'}">
+        	<a href="#">
+                <i class="fa fa-book"></i>
+                <span>FACTS</span>
+                <span class="pull-right-container">
+                     <i class="fa fa-angle-left pull-right"></i>
+                </span>
+            </a>
+        	<ul class="treeview-menu">
+	        
+		      	<thy:menuitem label="Facts" 
+					href="/facts/facts.xhtml" faclass="fa-book" />
+		      	<thy:menuitem label="Facts Changes"
+					href="/facts/facts_changes.xhtml" faclass="fa-book" />				
+					
+	        </ul>
+        </li>
+        
+		<li class="treeview" style="display: 
+			#{accessBean.accessPaths('/schedule/scheduleUpdate.xhtml',
+			'/schedule/scheduleSearch.xhtml',
+			'/schedule/scheduleMessageSearch.xhtml',
+			'/schedule/scheduleInventoryCompare.xhtml',
+			'/schedule/scheduleCompare.xhtml',
+			'/loom/loomLogs.xhtml',
+			'/airline/airline.xhtml')?'block':'none'}">
+        	<a href="#">
+                <i class="fa fa-database"></i>
+                <span>SCHEDULE</span>
+                <span class="pull-right-container">
+                     <i class="fa fa-angle-left pull-right"></i>
+                </span>
+            </a>
+        	<ul class="treeview-menu">
+        	
+				<thy:menuitem label="ASM/SSM Create" 
+					href="/schedule/scheduleUpdate.xhtml" faclass="fa-check" />
+				<thy:menuitem label="Flight Schedule Search" 
+					href="/schedule/scheduleSearch.xhtml" faclass="fa-check" />  
+				<thy:menuitem label="Schedule Messages" 
+					href="/schedule/scheduleMessageSearch.xhtml" faclass="fa-search" />
+				<thy:menuitem label="Period Finder" 
+					href="/schedule/scheduleSearchPeriodArranger.xhtml" faclass="fa-search" />  
+				<thy:menuitem label="Inventory-Schedule Compare" 
+					href="/schedule/scheduleInventoryCompare.xhtml" faclass="fa-database" /> 														      	
+				<thy:menuitem label="ASM/SSM File Compare" 
+					href="/schedule/scheduleCompare.xhtml" faclass="fa-upload" /> 
+    			<thy:menuitem label="Loom Logs" 
+  					href="/loom/loomLogs.xhtml" faclass="fa-reorder" />
+    			<thy:menuitem label="OA Selling Agreements" 
+  					href="/airline/airline.xhtml" faclass="fa-reorder" />  	
+				<thy:menuitem label="SPA" 
+  					href="/spa/spa.xhtml" faclass="fa-reorder" />    
+  				<thy:menuitem label="SW" 
+  					href="/schedule/swReport.xhtml" faclass="fa-reorder" />							
+
+	        </ul>
+        </li>
+        
+        <li class="treeview" 
+			style="display:#{accessBean.accessPaths('/inventory/inventory.xhtml')?'block':'none'}">
+        	<a href="#">
+                <i class="fa fa-list"></i>
+                <span>INVENTORY</span>
+                <span class="pull-right-container">
+                     <i class="fa fa-angle-left pull-right"></i>
+                </span>
+            </a>
+        	<ul class="treeview-menu">
+	        	<thy:menuitem label="Inventory" 
+  					href="/inventory/inventory.xhtml" faclass="fa-list" />
+  				<thy:menuitem label="Feed" 
+  					href="/inventory/feed.xhtml" faclass="fa-list" />
+				<thy:menuitem label="Inventory All" 
+  					href="/inventory/inventory_all.xhtml" faclass="fa-list" />  					
+  				
+  				<thy:menuitem label="Inventory Diff" 
+  					href="/inventory/inventory_diff.xhtml" faclass="fa-list" />   		
+  					
+				<thy:menuitem label="Inventory Nego" 
+  					href="/inventory/inventory_nego.xhtml" faclass="fa-list" />    																				  				
+															     					 	
+	        </ul>
+        </li>
+            
+       	<thy:menuitem label="Mercury Paoreq Test" 
+			href="/mercury/mercury.xhtml" faclass="fa-check-circle" />
+			
+       	<thy:menuitem label="PAOREQ/ITAREQ Test" 
+			href="/mercury/paoreq-itareq-test.xhtml" faclass="fa-check-circle" />
+						
+       	<thy:menuitem label="RTDP Test" 
+			href="/mercury/rtdp.xhtml" faclass="fa-check-circle" />			
+			
+		<li class="treeview" 
+			style="display:#{accessBean.accessPaths('/citypair/client.xhtml','/citypair/availibility_flightmap.xhtml')?'block':'none'}">
+        	<a href="#">
+                <i class="fa fa-plane"></i>
+                <span>City Pair</span>
+                <span class="pull-right-container">
+                     <i class="fa fa-angle-left pull-right"></i>
+                </span>
+            </a>
+        	<ul class="treeview-menu">
+        		<thy:menuitem label="City Pair Client" 
+		    	href="/citypair/client.xhtml" faclass="fa-plane" />
+		    	<thy:menuitem label="Availibilty Map" 
+		    	href="/citypair/availibility_flightmap.xhtml" faclass="fa-plane" />
+	        </ul>
+        </li>         
+        
+		<li class="treeview" 
+			style="display:#{accessBean.accessPaths('/troya/command.xhtml','/troya/availibility_flightmap.xhtml')?'block':'none'}">
+        	<a href="#">
+                <i class="fa fa-keyboard-o"></i>
+                <span>Troya</span>
+                <span class="pull-right-container">
+                     <i class="fa fa-angle-left pull-right"></i>
+                </span>
+            </a>
+        	<ul class="treeview-menu">
+	        		<thy:menuitem label="Troya Command" 
+		    	href="/troya/command.xhtml" faclass="fa-keyboard-o" />
+					<thy:menuitem label="Availibilty Map" 
+		    	href="/troya/availibility_flightmap.xhtml" faclass="fa-keyboard-o" />
+	        </ul>
+        </li>        
+        
+		<li class="treeview" 
+			style="display:#{accessBean.accessPaths('/mercury/availability_bulk.xhtml')?'block':'none'}">
+        	<a href="#">
+                <i class="fa fa-plane"></i>
+                <span>Reports - Compare</span>
+                <span class="pull-right-container">
+                     <i class="fa fa-angle-left pull-right"></i>
+                </span>
+            </a>
+        	<ul class="treeview-menu">
+	        	<thy:menuitem label="Availability Bulk" 
+		       		href="/mercury/availability_bulk.xhtml" faclass="fa-bar-chart" />
+				<thy:menuitem label="Citypairs Compare" 
+		       		href="/mercury/availability_bulk_mercury.xhtml" faclass="fa-bar-chart" />		       		
+				<thy:menuitem label="Availability Bulk Jobs" 
+		       		href="/mercury/bulkjobs.xhtml" faclass="fa-bar-chart" />	
+		       	<thy:menuitem label="Connections" 
+		       		href="/mercury/connections.xhtml" faclass="fa-bar-chart" />	
+				<thy:menuitem label="Seamless Compare" 
+		       		href="/mercury/seamless-compare.xhtml" faclass="fa-bar-chart" />
+				<thy:menuitem label="Seamless Compare Bulk" 
+		       		href="/mercury/seamless-compare-bulk.xhtml" faclass="fa-bar-chart" />
+				<thy:menuitem label="CityPair Compare Bulk" 
+		       		href="/mercury/citypair-compare-bulk.xhtml" faclass="fa-bar-chart" />
+				<thy:menuitem label="Rtpd Compare" 
+		       		href="/mercury/rtdp_compare.xhtml" faclass="fa-bar-chart" />
+		       			       		
+	        </ul>
+        </li>
+        
+                
+		<li class="treeview" 
+			style="display:#{accessBean.accessPaths('/monitor/monitor.xhtml')?'block':'none'}">
+        	<a href="#">
+                <i class="fa fa-bar-chart"></i>
+                <span>STAT</span>
+                <span class="pull-right-container">
+                     <i class="fa fa-angle-left pull-right"></i>
+                </span>
+            </a>
+        	<ul class="treeview-menu">
+	        	<thy:menuitem label="Seamless Monitor" 
+		       		href="/monitor/monitor.xhtml" faclass="fa-bar-chart" />
+	        </ul>
+        </li>
+        <!--  -->
+        <li class="treeview" 
+		 	style="display:#{accessBean.accessPaths(
+		 		'/avs/parser.xhtml','/avs/messages.xhtml',
+		 		'/avs/query.xhtml','/avs/process.xhtml',
+		 		'/carriergrossindex/carriergrossindex.xhtml')?'block':'none'}">
+        	<a href="#">
+                <i class="fa fa-envelope"></i>
+                <span>AVS</span>
+                <span class="pull-right-container">
+                     <i class="fa fa-angle-left pull-right"></i>
+                </span>
+            </a>
+        	<ul class="treeview-menu">
+	        	<thy:menuitem label="AVS Parse" 
+		    		href="/avs/parser.xhtml" faclass="fa-envelope" />
+	        	
+	        	<thy:menuitem label="Incoming N/AVS Messages" 
+		    		href="/avs/messages.xhtml" faclass="fa-envelope" />
+		    		
+		    	   	<thy:menuitem label="Outgoing N/AVS Messages" 
+		    		href="/avs/navs_messages.xhtml" faclass="fa-envelope" />	
+		    		
+		    	<thy:menuitem label="Query" 
+		    		href="/avs/query.xhtml" faclass="fa-envelope" />
+		    		
+		    	<thy:menuitem label="Process" 
+		    		href="/avs/process.xhtml" faclass="fa-envelope" />		    		
+		    		
+	           	<thy:menuitem label="Carrier Gross Index" 
+		    		href="/carriergrossindex/carriergrossindex.xhtml" faclass="fa-envelope" />
+		    		
+		 		<thy:menuitem label="Navs Agreements" 
+					href="/inventory/agreements.xhtml" faclass="fa-list" /> 
+					     					 	
+				<thy:menuitem label="Navs Agreements Search" 
+					href="/inventory/agreement_search.xhtml" faclass="fa-list" />
+					
+				<thy:menuitem label="Navs Recap" 
+					href="/inventory/recap.xhtml" faclass="fa-list" />
+					
+				<thy:menuitem label="Navs Rules" 
+					href="/inventory/navs_rules.xhtml" faclass="fa-list" />	
+					
+ 				<thy:menuitem label="TypeB IP-PORTs" 
+					href="/typeb/navsipport.xhtml" faclass="fa-list" />
+					
+ 				<thy:menuitem label="TypeB Link" 
+					href="/typeb/navsaddress.xhtml" faclass="fa-list" />		    	
+
+	        </ul>
+        </li>        
+		<li class="treeview" style="display: 
+			#{accessBean.accessPaths('/blacklist/gds.xhtml',
+				'/blacklist/blacklist.xhtml',
+				'/blacklist/blacklist_upload.xhtml')?'block':'none'}">
+        	<a href="#">
+                <i class="fa fa-thumbs-up"></i>
+                <span>BLACK LIST</span>
+                <span class="pull-right-container">
+                     <i class="fa fa-angle-left pull-right"></i>
+                </span>
+            </a>
+        	<ul class="treeview-menu">
+		        <thy:menuitem label="GDS" 
+		        	href="/blacklist/gds.xhtml" faclass="fa-thumbs-up" />	
+	 			<thy:menuitem label="BlackList" 
+		        	href="/blacklist/blacklist.xhtml" faclass="fa-thumbs-up" />  
+		       	<thy:menuitem label="Upload" 
+		        	href="/blacklist/blacklist_upload.xhtml" faclass="fa-thumbs-up" />
+		       	<thy:menuitem label="Bulk Add" 
+		        	href="/blacklist/blacklist_bulk_add.xhtml" faclass="fa-thumbs-up" />		        	
+		       	<thy:menuitem label="Airlines" 
+		        	href="/blacklist/airlines.xhtml" faclass="fa-thumbs-up" />	
+		       	<thy:menuitem label="Countries" 
+		        	href="/blacklist/countries.xhtml" faclass="fa-thumbs-up" />			        		        	
+	        </ul>
+        </li>
+               
+        <!--  --> 
+		<li class="treeview" style="display: 
+			#{accessBean.accessPaths('/neurella/distributionChannels.xhtml')?'block':'none'}">
+        	<a href="#">
+                <i class="fa fa-thumbs-o-up"></i>
+                <span>NEURELLA</span>
+                <span class="pull-right-container">
+                     <i class="fa fa-angle-left pull-right"></i>
+                </span>
+            </a>
+        	<ul class="treeview-menu">
+        		<thy:menuitem label="Flight Families" href="/neurella/flightFamilies.xhtml"
+        			 faclass="fa-thumbs-o-up"/> 
+        		<thy:menuitem label="Distribution Channels" href="/neurella/distributionChannels.xhtml"
+        			 faclass="fa-thumbs-o-up"/>
+				<thy:menuitem label="Source APis" href="/neurella/sourceApis.xhtml"
+        			 faclass="fa-thumbs-o-up"/>   
+        		<thy:menuitem label="Custom Regions (POS)" href="/neurella/customRegionsOfPOS.xhtml"
+        			 faclass="fa-thumbs-o-up"/> 
+        		<thy:menuitem label="Custom Regions (Market)" href="/neurella/customRegionsOfMarket.xhtml"
+        			 faclass="fa-thumbs-o-up"/> 
+        		<thy:menuitem label="Point Of Sale" href="/neurella/pointOfSales.xhtml"
+        			 faclass="fa-thumbs-o-up"/>             			 
+        		<thy:menuitem label="Markets" href="/neurella/markets.xhtml"
+        			 faclass="fa-thumbs-o-up"/>   
+				<thy:menuitem label="Task" href="/neurella/task.xhtml"
+        			 faclass="fa-thumbs-o-up"/>  
+				<thy:menuitem label="Filter" href="/neurella/filters.xhtml"
+        			 faclass="fa-thumbs-o-up"/>        			           			 
+				<thy:menuitem label="Scenario" href="/neurella/scenario.xhtml"
+        			 faclass="fa-thumbs-o-up"/>        			 
+				<thy:menuitem label="Market Seviye Öncelikleri" href="/neurella/weighttable_market.xhtml"
+        			 faclass="fa-thumbs-o-up"/> 
+				<thy:menuitem label="POS Seviye Öncelikleri" href="/neurella/weighttable_pos.xhtml"
+        			 faclass="fa-thumbs-o-up"/>  
+				<thy:menuitem label="Değişiklik Logları" href="/neurella_change/changes.xhtml"
+        			 faclass="fa-thumbs-o-up"/>
+        		<thy:menuitem label="Simulasyon Management" href="/neurella/management.xhtml"
+        			 faclass="fa-thumbs-o-up"/>
+				<thy:menuitem label="Şablonlar" href="/neurella_template/templates.xhtml" 
+        			 faclass="fa-thumbs-o-up"/>         			 
+    			       			       			 
+	        </ul>
+        </li>
+        
+		<li class="treeview" 
+        	style="display:#{accessBean.accessPaths(
+        		'/access/users.xhtml',
+        		'/access/roles.xhtml',
+        		'/access/pages.xhtml')?'block':'none'}">
+        	<a href="#">
+                <i class="fa fa-user-o"></i>
+                <span>ABUSE</span>
+                <span class="pull-right-container">
+                     <i class="fa fa-angle-left pull-right"></i>
+                </span>
+            </a>
+        	<ul class="treeview-menu">
+
+		        <thy:menuitem label="Abuse Simulation" href="/abuse/abuse_simulation2.xhtml"
+		        	  faclass="fa-files-o"/> 
+		        	  
+				<thy:menuitem label="Tropy Service Test By Pnr" href="/abuse/tropy_service_test_by_pnr.xhtml"
+		        	  faclass="fa-files-o"/> 		        	  
+		        	  
+				<thy:menuitem label="Tropy Service Test Random" href="/abuse/tropy_service_test_random.xhtml"
+		        	  faclass="fa-files-o"/>		        	  
+	         		
+	        </ul>
+        </li>           		      
+
+        <thy:menuitem label="Logs" href="/logs/logs.xhtml"
+        	  faclass="fa-files-o" rendered="#{generalBean.applicationLog}" /> 
+        	          
+        <li class="treeview" 
+        	style="display:#{accessBean.accessPaths(
+        		'/access/users.xhtml',
+        		'/access/roles.xhtml',
+        		'/access/pages.xhtml')?'block':'none'}">
+        	<a href="#">
+                <i class="fa fa-user-o"></i>
+                <span>ACCESS MANAGER</span>
+                <span class="pull-right-container">
+                     <i class="fa fa-angle-left pull-right"></i>
+                </span>
+            </a>
+        	<ul class="treeview-menu">
+	        
+	            <thy:menuitem label="Users" 
+	         		href="/access/users.xhtml" faclass="fa-user-o" />
+	        	
+	        	<thy:menuitem label="Roles" 
+	         		href="/access/roles.xhtml" faclass="fa-user-plus" />
+	         		
+	       		<thy:menuitem label="Pages" 
+	         		href="/access/pages.xhtml" faclass="fa-list" />
+	         		
+	        </ul>
+        </li>
+       	<li class="treeview" style="display:#{accessBean.accessPaths(
+        		'/couchbase/couchbase.xhtml',
+        		'/jms/jms.xhtml',
+        		'/couchbase/couchbase_edit.xhtml')?'block':'none'}">
+        	<a href="#">
+                <i class="fa fa-gear"></i>
+                <span>DEV</span>
+                <span class="pull-right-container">
+                     <i class="fa fa-angle-left pull-right"></i>
+                </span>
+            </a>
+        	<ul class="treeview-menu">
+	        
+	        	<thy:menuitem label="Couchbase Document Viewer" 
+	         	href="/couchbase/couchbase.xhtml" faclass="fa-gear" checkaccess="true"/>
+	         	
+	         	<thy:menuitem label="Couchbase Document Edit" 
+	         	href="/couchbase/couchbase_edit.xhtml" faclass="fa-gear" checkaccess="true"/>
+	         	
+	         	<thy:menuitem label="Couchbase View Edit" 
+	         	href="/couchbase/couchbase_view_edit.xhtml" faclass="fa-gear" checkaccess="true"/>	         	
+	         	
+	       	 	<thy:menuitem label="JMS/ActiveMQ Message" href="/jms/jms.xhtml" faclass="fa-mail-reply" />
+	       	 	
+	       	 	<thy:menuitem label="Active MQ Browser" href="/jms/activemq_monitor.xhtml" faclass="fa-mail-reply" />
+	       	 	
+	        	<thy:menuitem label="Configuration" href="/configuration/configuration.xhtml" faclass="fa-mail-reply" />
+	        	
+	        	<thy:menuitem label="Destinations" href="/configuration/destinations.xhtml" faclass="fa-ip" />
+	        	
+	        </ul>
+        </li>
+        
+       	<thy:menuitem label="Ediface Generator" 
+			href="/mercury/edifact_genarate.xhtml" faclass="fa-check-circle" />		        
+        
+      	<thy:menuitem label="Couchbase Management" href="/management/couchbase.xhtml"
+      			 faclass="fa-wrench" checkaccess="#{!accessBean.couchbaseProblem}"/>
+      			 
+      	<thy:menuitem label="Mercury Core Management" href="/management/mercurydestinations.xhtml"
+      			 faclass="fa-wrench" checkaccess="true"/>
+ 
+	    <thy:menuitem label="Ping Check" href="/ping/ping.xhtml" faclass="fa-check-square" 
+	    	checkaccess="#{!accessBean.couchbaseProblem}"/>
+
+    </ul>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+</ui:composition>

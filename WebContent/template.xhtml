@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                template="/mercury_admin.xhtml">
+
+    <ui:define name="head">
+        <title>#{title}</title>
+     
+        <link rel="manifest" href="#{request.contextPath}/manifest.json"/>
+        <meta name="theme-color" content="#444"/>
+        <meta name="mobile-web-app-capable" content="yes"/>
+        <h:outputStylesheet library="css" name="beautify-json.css"/>
+        <h:outputScript name="primefaces_ext.js" library="js"></h:outputScript>
+    </ui:define>
+
+    <ui:define name="logo-lg">
+        <h:graphicImage library="favicon" name="favicon-32x32.png" 
+        	style="border-radius: 3px;"/>
+    </ui:define>
+
+    <ui:define name="logo-mini">
+        <h:graphicImage library="favicon" name="favicon-16x16.png"
+        	style="border-radius: 3px;"/>
+    </ui:define>
+
+     <ui:define name="menu">
+         <ui:include src="/includes/menu.xhtml"/>
+     </ui:define>
+
+    <ui:define name="top-menu">
+        <ui:include src="/includes/top-bar.xhtml"/>
+    </ui:define>
+    
+    <ui:define name="title">
+    	<h:outputLabel value="#{title}"></h:outputLabel>
+    </ui:define>
+   
+    
+    <ui:define name="body">
+    
+    	<ui:insert name="top"/>
+    	<ui:insert name="pageform"/>
+    	<ui:insert name="content"/>
+    	<ui:insert name="contentFooter"/>
+    	
+    </ui:define>
+    
+    <ui:define name="footer">
+          <a target="_blank"
+           href="https://github.com/adminfaces/">
+            Mercury Console 2017 
+        </a>
+
+        <div class="pull-right hidden-xs" style="color: gray">
+            <i>#{generalBean.version}v - Client IP : #{generalBean.remoteAddr} - Server IP : #{generalBean.localHost} </i>
+        </div>
+
+
+    </ui:define>
+
+
+</ui:composition>

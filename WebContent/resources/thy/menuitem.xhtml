@@ -1,0 +1,27 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:composite="http://java.sun.com/jsf/composite">
+
+	<composite:interface>
+		<composite:attribute name="href" />
+		<composite:attribute name="label" />
+		<composite:attribute name="faclass" />
+		<composite:attribute name="checkaccess" default="true" />
+	</composite:interface>
+	
+	<composite:implementation>
+		<li>
+	       <p:link href="#{cc.attrs.href}" rendered="#{!cc.attrs.checkaccess}">
+	           <i class="fa #{cc.attrs.faclass}"></i>
+	           <span>#{cc.attrs.label}</span>
+	       </p:link>
+	       <p:link href="#{cc.attrs.href}" rendered="#{cc.attrs.checkaccess}"
+	       		style="display:#{accessBean.accessPaths(cc.attrs.href)?'block':'none'}">
+	           <i class="fa #{cc.attrs.faclass}"></i>
+	           <span>#{cc.attrs.label}</span>
+	       </p:link>
+	    </li>
+	</composite:implementation>
+	  
+</html>

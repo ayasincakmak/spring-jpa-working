@@ -1,0 +1,99 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://java.sun.com/jsf/composite">
+
+	<c:interface>
+		<c:attribute name="bean"/>
+    	<c:attribute name="historicPath"/>
+   	</c:interface>
+	
+	<c:implementation>
+		<h:form id="formRecordInfo" prependId="false" onkeypress="if (event.keyCode == 13) { return false; }">
+			<!-- RECORD INFO -->
+			<div class="ui-g-12 ui-md-12 ui-lg-12">
+				<p:panel header="Record Info" style="width:100%;" toggleable="true" closable="false" rendered="#{cc.attrs.bean.modelId ne null}">
+					<div class="ui-g">
+						<div class="ui-g-12 ui-md-6 ui-lg-6">
+							<div class="ui-g">
+								<div class="ui-g-2 ui-md-2 ui-lg-2 padTopBottom">
+									<p:outputLabel styleClass="boldLabel">Record Id:</p:outputLabel>
+								</div>
+								<div class="ui-g-10 ui-md-10 ui-lg-10 padTopBottom">
+									<p:outputLabel styleClass="boldLabel" style="color:#{cc.attrs.bean.model.recordStatus eq 'ON' ? 'green' : cc.attrs.bean.model.recordStatus eq 'TEMP' ? 'blue' : 'red'};"
+									>#{cc.attrs.bean.model.id}</p:outputLabel>
+								</div>
+								
+								<div class="ui-g-2 ui-md-2 ui-lg-2 padTopBottom">
+									<p:outputLabel styleClass="boldLabel">Historic Id:</p:outputLabel>
+								</div>
+								<div class="ui-g-10 ui-md-10 ui-lg-10 padTopBottom">
+									<p:commandLink rendered="#{cc.attrs.bean.model.historicId ne null}"
+										onclick="window.open('#{cc.attrs.historicPath}?id=#{cc.attrs.bean.model.historicId}' ,'_blank');return;" 
+									>
+										<h:outputText value="#{cc.attrs.bean.model.historicId}" styleClass="boldLabel" style="color:red"/>
+									</p:commandLink>
+									<p:outputLabel rendered="#{cc.attrs.bean.model.historicId eq null or cc.attrs.bean.model.historicId eq ''}"/>
+								</div>
+								
+								<div class="ui-g-2 ui-md-2 ui-lg-2 padTopBottom">
+									<p:outputLabel styleClass="boldLabel" >Record Status:</p:outputLabel>
+								</div>
+								<div class="ui-g-10 ui-md-10 ui-lg-10 padTopBottom">
+									<p:outputLabel styleClass="boldLabel" style="color:#{cc.attrs.bean.model.recordStatus eq 'ON' ? 'green' : cc.attrs.bean.model.recordStatus eq 'TEMP' ? 'blue' : 'red'};" 
+									>#{cc.attrs.bean.model.recordStatus}</p:outputLabel>
+								</div>
+								
+								<div class="ui-g-2 ui-md-2 ui-lg-2 padTopBottom">
+									<p:outputLabel styleClass="boldLabel" >Record Kind:</p:outputLabel>
+								</div>
+								<div class="ui-g-10 ui-md-10 ui-lg-10 padTopBottom">
+									<p:outputLabel styleClass="iLabel" style="color:#{cc.attrs.bean.model.recordKind eq 'Manual' ? 'green' : cc.attrs.bean.model.recordKind eq 'Auto' ? 'blue' : 'red'};"
+									>#{cc.attrs.bean.model.recordKind}</p:outputLabel>
+								</div>
+							</div>
+						</div>
+						<div class="ui-g-12 ui-md-6 ui-lg-6">
+							<div class="ui-g">
+								<div class="ui-g-2 ui-md-2 ui-lg-2 padTopBottom">
+									<p:outputLabel styleClass="boldLabel" >Create User:</p:outputLabel>
+								</div>
+								<div class="ui-g-10 ui-md-10 ui-lg-10 padTopBottom">
+									<p:outputLabel styleClass="boldLabel" style="color:blue">#{cc.attrs.bean.model.createUser}</p:outputLabel>
+								</div>
+								
+								<div class="ui-g-2 ui-md-2 ui-lg-2 padTopBottom">
+									<p:outputLabel styleClass="boldLabel" >Create Date:</p:outputLabel>
+								</div>
+								<div class="ui-g-10 ui-md-10 ui-lg-10 padTopBottom">
+									<p:outputLabel styleClass="boldLabel" style="color:blue" value="#{cc.attrs.bean.model.createDate}">
+										<f:convertDateTime pattern="dd.MM.yyyy HH:mm" timeZone="#{cc.attrs.bean.timeZone}"/>
+									</p:outputLabel>
+								</div>
+								
+								<div class="ui-g-2 ui-md-2 ui-lg-2 padTopBottom">
+									<p:outputLabel styleClass="boldLabel" >Update User:</p:outputLabel>
+								</div>
+								<div class="ui-g-10 ui-md-10 ui-lg-10 padTopBottom">
+									<p:outputLabel styleClass="boldLabel" style="color:blue">#{cc.attrs.bean.model.updateUser}</p:outputLabel>
+								</div>
+								
+								<div class="ui-g-2 ui-md-2 ui-lg-2 padTopBottom">
+									<p:outputLabel styleClass="boldLabel" >Update Date:</p:outputLabel>
+								</div>
+								<div class="ui-g-10 ui-md-10 ui-lg-10 padTopBottom">
+									<p:outputLabel styleClass="boldLabel" style="color:blue" value="#{cc.attrs.bean.model.updateDate}">
+										<f:convertDateTime pattern="dd.MM.yyyy HH:mm" timeZone="#{cc.attrs.bean.timeZone}"/>
+									</p:outputLabel>
+								</div>
+							</div>
+						</div>
+					</div>
+				</p:panel>
+			</div>
+		</h:form>
+	</c:implementation>
+</html>
+

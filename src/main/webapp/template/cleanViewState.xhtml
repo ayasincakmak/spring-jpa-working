@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:component xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html" xmlns:p="http://primefaces.org/ui">
+
+
+
+	<script>
+	
+		var clearViewState= true;
+		
+		function suspendClearViewState() {
+			clearViewState=false;
+		}
+		//viewCleanup
+		$(window).on(
+				'beforeunload',
+				function( event ) {
+				
+				if(clearViewState) {
+				
+					console.log("cleaning viewState");
+					try {
+
+						var url = '#{request.contextPath}/general/RemoveView';
+						var query = 'viewId='+ encodeURIComponent($("input[name='javax.faces.ViewState']").val())+
+							"&amp;mapId="+"#{view.transientStateHelper.getTransient('com.sun.faces.application.view.viewMapId')}";
+						var contentType = "application/x-www-form-urlencoded";
+
+						if (navigator.sendBeacon) {
+							// Synchronous XHR is deprecated during unload event, modern browsers offer Beacon API for this which will basically fire-and-forget the request.
+							navigator.sendBeacon(url, new Blob([ query ], {
+								type : contentType
+							}));
+						} else {
+							var xhr = new XMLHttpRequest();
+							xhr.open("POST", url, false);
+							xhr.setRequestHeader("X-Requested-With","XMLHttpRequest");
+							xhr.setRequestHeader("Content-Type", contentType);
+							xhr.send(query);
+						}
+					} catch (e) {
+						console.log(e);
+					} 
+					}
+					
+					clearViewState = true;
+
+				});
+	</script>
+
+
+</ui:component>

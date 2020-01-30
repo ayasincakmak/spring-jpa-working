@@ -1,0 +1,53 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://java.sun.com/jsf/composite">
+
+	<c:interface>
+		<c:attribute name="panelId"/>
+		<c:attribute name="renderedDialog"/>
+		<c:attribute name="ondValue"/>
+    	<c:attribute name="addActionListener" method-signature="void addFastOnd()"/>
+    	<c:attribute name="addUpdate"/>
+    	<c:attribute name="cancelActionListener" method-signature="void cancelFastOnd()"/>
+    	<c:attribute name="cancelUpdate"/>
+   	</c:interface>
+	
+	<c:implementation>
+		<h:form id="formFastOnd" prependId="false" onkeypress="if (event.keyCode == 13) { return false; }">
+			<p:outputPanel id="#{cc.attrs.panelId}">
+				<p:dialog id="dialogFastOND" header="Add Fast OND" widgetVar="dlgFastOND" height="180" width="450" visible="true"
+					rendered="#{cc.attrs.renderedDialog}" closable="false" modal="false">
+					<div class="ui-g">
+						<div class="ui-g-12 ui-md-2 ui-lg-2">
+							<p:outputLabel styleClass="iLabel" value="Fast OND:"/>
+						</div>
+						
+						<div class="ui-g-12 ui-md-10 ui-lg-10">
+							<p:inputTextarea id="txtFastOnd" label="Fast OND" cols="45" rows="5" value="#{cc.attrs.ondValue}" scrollHeight="5" autoResize="false"
+								required="#{cc.attrs.renderedDialog}" placeholder="Please enter the values ​​separated by a semicolon" style="width:100%; height:100%; resize:none"/>
+						</div>
+					</div>
+					
+					<div class="ui-g">
+						<div class="ui-g-12 ui-md-12 ui-lg-12">
+							<p:spacer/>
+						</div>
+					</div>
+					
+					<div class="ui-g">
+						<div class="ui-g-6 ui-md-6 ui-lg-6">
+							<p:commandButton value="Add" id="fastOndAdd" actionListener="#{cc.attrs.addActionListener}" update="#{cc.attrs.addUpdate}" style="width:100%;" process="formFastOnd"/>
+						</div>
+						<div class="ui-g-6 ui-md-6 ui-lg-6">
+							<p:commandButton value="Cancel" id="fastOndCancel" actionListener="#{cc.attrs.cancelActionListener}" update="#{cc.attrs.cancelUpdate}" style="width:100%;" process="formFastOnd" immediate="true"/>
+						</div>
+					</div>
+				</p:dialog>
+			</p:outputPanel>
+		</h:form>
+	</c:implementation>
+</html>
+

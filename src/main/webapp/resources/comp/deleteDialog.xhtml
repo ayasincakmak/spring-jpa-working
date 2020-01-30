@@ -1,0 +1,25 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://java.sun.com/jsf/composite">
+
+	<c:interface>
+		<c:attribute name="message"/>
+		<c:attribute name="header"/>
+    	<c:attribute name="deleteActionListener" method-signature="void delete()"/>
+    	<c:attribute name="deleteUpdate"/>
+   	</c:interface>
+	
+	<c:implementation>
+		<h:form id="formDeleteDialog" prependId="false" onkeypress="if (event.keyCode == 13) { return false; }">
+			<p:confirmDialog id="dlgDeleteDialog" widgetVar="deleteDialog" showEffect="fade" hideEffect="fade" message="#{cc.attrs.message}" header="#{cc.attrs.header}" width="400" height="20">
+		        <p:commandButton id="btnDlgDelete" value="Delete" icon="fa fa-eraser" process="formDeleteDialog"
+					actionListener="#{cc.attrs.deleteActionListener}" update="formDeleteDialog, #{cc.attrs.deleteUpdate}"/>
+		        <p:commandButton id="btnDlgCancel" value="Cancel" type="button" icon="fa fa-close" onclick="PF('deleteDialog').hide()"/>
+		    </p:confirmDialog>
+		</h:form>
+	</c:implementation>
+</html>
+

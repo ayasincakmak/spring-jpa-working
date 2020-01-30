@@ -1,0 +1,270 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui">
+
+<f:view>
+
+	<h:head id="templateHead">
+		<f:facet name="first">
+			<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE10" />
+		</f:facet>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta http-equiv="pragma" content="no-cache" />
+		<meta http-equiv="cache-control" content="no-cache" />
+		<meta http-equiv="expires" content="0" />
+		<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport" />
+		<ui:param name="paramTitle" value="Offer Management System"></ui:param>
+		<title><ui:insert name="title">paramTitle</ui:insert></title>
+
+		<h:outputScript library="primefaces-oms" name="js/layout.js" />
+		<h:outputScript library="primefaces-oms" name="charts/charts.js" />
+		
+		<h:outputStylesheet library="primefaces-oms" name="charts/charts.css"/>
+		<h:outputStylesheet library="primefaces-oms" name="schedule/schedule.css" />
+		<h:outputScript library="primefaces-oms" name="moment/moment.js" />
+		<h:outputScript library="primefaces-oms" name="schedule/schedule.js" />
+		<h:outputStylesheet library="primefaces-oms" name="css/nanoscroller.css" />
+		<h:outputScript library="primefaces-oms" name="js/nanoscroller.js" />
+		<h:outputStylesheet library="primefaces-oms" name="css/layout-blue.css" />
+		<h:outputScript library="primefaces-oms" name="js/ripple.js" />
+		<h:outputStylesheet library="primefaces-oms" name="css/ripple.css" />
+
+
+
+		<!-- CSS -->
+		<!-- Bootstrap 4.1.0 -->
+		<!-- <link rel="stylesheet" href="../resources/bootstrap/css/bootstrap.min.css"/> -->
+
+		<!-- SCRIPT -->
+		<!-- jQuery 2.2.3 -->
+		<!-- <script src="../resources/js/jquery/jquery-3.3.1.min.js"/> -->
+		<!-- Bootstrap 4.1.0 -->
+		<!-- <script src="../resources/bootstrap/js/bootstrap.min.js"/> -->
+
+	</h:head>
+	<h:body>
+
+		<script type="text/javascript">
+			//<![CDATA[
+			function skinBar() {
+				this.cfg.shadow = false;
+				this.cfg.title = '';
+				this.cfg.seriesColors = [ '#3984b8', '#7e8dcd' ];
+				this.cfg.grid = {
+					background : '#ffffff',
+					borderColor : '#ffffff',
+					gridLineColor : '#dee4e9',
+					shadow : false
+				};
+				this.cfg.axesDefaults = {
+					borderWidth : 0.1,
+					borderColor : 'dce2e7',
+					rendererOptions : {
+						textColor : '#757575'
+					}
+				};
+				this.cfg.seriesDefaults = {
+					shadow : false,
+					lineWidth : 1,
+					renderer : $.jqplot.BarRenderer,
+					markerOptions : {
+						shadow : false,
+						size : 7,
+						style : 'circle'
+					}
+				}
+			}
+			
+		
+			$("body")
+					.mousemove(
+							function(event) {
+								$(".statusStartDiv").css({top: event.pageY + 15, left: event.pageX+15});
+							});
+			//]]>
+		</script>
+
+		<style type="text/css">
+.main-content {
+	padding: 0;
+}
+.layout-content {
+ 	font-size:12px;
+}
+.ajax-loader {
+	font-size: 40px;
+}
+
+.iLabel {
+	font-weight: bold;
+	padding-right: 3px;
+	white-space: pre;
+}
+
+.boldLabel {
+	font-weight: bold;
+	padding-right: 3px;
+}
+
+.top-aligned-padding-columns td {
+    vertical-align: top;
+	padding-top: 4px;
+	padding-left: 4px;
+}
+
+.alingTopLeft {
+	vertical-align: top;
+	text-align: left;
+}
+
+.hLine .ui-panel-titlebar {
+	height: 6px !important;
+	padding: 0 !important;
+	margin: 0 !important;
+}
+
+.hLine {
+	padding: 0 !important;
+}
+
+.ui-inputswitch {
+	height:22px !important;
+	margin-top: 3px;
+}
+.ui-selectcheckboxmenu-multiple .ui-selectcheckboxmenu-trigger .ui-icon {
+    margin-top: 5px !important;
+	top: 0 !important;
+	
+}
+body .ui-fluid .ui-trigger-calendar .ui-datepicker-trigger.ui-button {
+	height: auto !important;
+}
+body .ui-inputswitch .ui-inputswitch-on span, body .ui-inputswitch .ui-inputswitch-off span {
+  top: 0px !important;
+  }
+
+.infoPanel {
+	width: 200px;
+}
+
+.padTopBottom{
+	padding-top: 3px;
+    padding-bottom: 3px;
+}
+</style>
+
+		<p:growl id="growl" showDetail="false" life="10000">
+			<p:autoUpdate />
+		</p:growl>
+
+		<p:ajaxStatus onstart="$('.statusStartDiv').show(); "
+			oncomplete="$('.statusStartDiv').hide(); " onerror="PF('cd').show();$('.statusStartDiv').hide();"
+			onsuccess="$('.statusStartDiv').hide();">
+		</p:ajaxStatus>
+
+
+		<p:confirmDialog message="#{messages['menu.warn.expire']}" header="#{messages['dialog.timeout.header']}" severity="alert" widgetVar="cd"
+			style="max-width:400px">
+
+			<p:button value="#{messages['general.value.Yes']}" type="button" styleClass="ui-confirmdialog-yes" icon="fa fa-check"
+				style="float:right;margin-right:5px;" onclick="PF('cd').hide(); parent.location.reload(); return;" />
+
+			<p:button value="#{messages['general.value.No']}" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close"
+				style="float:right;margin-right:5px;" onclick="PF('cd').hide();return;" />
+
+		</p:confirmDialog>
+
+
+		<p:confirmDialog global="true">
+
+			<p:commandButton value="#{messages['general.value.No']}" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close"
+				style="float:right;margin-right:5px;" />
+			<p:commandButton value="#{messages['general.value.Yes']}" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check"
+				style="float:right;margin-right:5px;" />
+
+		</p:confirmDialog>
+
+
+
+		<div class="statusStartDiv" style="display: none; position: absolute; z-index: 10000000;">
+			<i class="fa fa-spinner fa-pulse ajax-loader" aria-hidden="true"></i>
+		</div>
+
+
+
+		<!-- 			<p:idleMonitor timeout="300000">
+				<p:ajax event="idle" listener="#{utilBean.onIdle}" update="messages" />
+			</p:idleMonitor> -->
+
+
+		<div class="layout-wrapper">
+	
+			<div class="layout-sidebar">
+				<div class="sidebar-logo">
+					<a href="#{request.contextPath}/index.html" style="color: white; margin-left: 5px;"> <img src="#{resource['primefaces-oms:images/thy.png']}" alt=""
+						style="margin-top: 2px; border: 0px;" /> <span style="font-size: 18px; text-shadow: 0px 0px 2px; color ='white'; vertical-align: bottom;">Teklif
+							Yönetimi</span>
+					</a> <a href="#" class="sidebar-anchor animated fadeIn" title="Toggle Menu"><i class="fa"></i> </a>
+				</div>
+
+				<div class="nano">
+					<div class="nano-content sidebar-scroll-content">
+						<div class="layout-menu-container">
+							<ui:include src="contentMenu.xhtml"></ui:include>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<div class="layout-main">
+
+				<div class="layout-topbar">
+
+					<div class="topbar-search">
+						<div style="margin-top:5px;">
+							<label	style="margin:18px;font-size: 20px; text-shadow: 0px 0px 0.1px; color:white;vertical-align: bottom;"><ui:insert name="title"></ui:insert></label>
+						</div>
+					</div>
+
+
+					<div class="layout-topbar-menu-wrapper">
+						<ul class="topbar-menu animated">
+
+							<li class="profile-item"><a href="#" class="ripplelink" ><img id="j_idt19" src="#{resource['primefaces-oms:images/avatar.png']}" alt=""
+									style="border: 0px;margin-top:0px;" /> <span class="topbar-item-name profile-name">YASİN </span> </a>
+
+								<ul class="animated infoPanel">
+									<li role="menuitem"><div style="padding: 8px 14px;"> <i class="fa fa-fw fa-user"></i>  <span style="font-weight:bold;"> Cakmak </span> 
+									<div > (00) </div> 
+									</div></li>
+									<li role="menuitem"> <div style="padding: 8px 14px;">  <i class="fa fa-fw fa-sitemap"></i> <span>11</span> 
+									</div></li>
+									<li role="menuitem"> <div style="padding: 8px 14px;">  <i class="fa fa-fw fa-user-secret"></i> <span>222</span> 
+									</div></li>
+									<li role="menuitem"> <div style="padding: 8px 14px;">  <i class="fa fa-fw fa-info"></i> <span>Version: 333</span> 
+									</div></li>
+									<li role="menuitem"><a href="#{request.contextPath}/logout"> <i class="fa fa-fw fa-sign-out"></i> <span>Logout</span>
+									</a></li>
+								</ul>
+							
+							</li>
+
+						</ul>
+					</div>
+
+				</div>
+			
+
+				<div class="layout-content">
+
+					<ui:insert name="content"></ui:insert>
+
+				</div>
+				
+			</div>
+
+		</div>
+
+		<ui:include src="cleanViewState.xhtml" />
+	</h:body>
+</f:view>
+</html>

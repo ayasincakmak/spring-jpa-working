@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pe="http://primefaces.org/ui/extensions"
+	template="/template.xhtml">
+	<ui:param name="title" value="Emd Validation Table"></ui:param>
+
+	<ui:define name="content">
+		<p:panel styleClass="box-info">
+
+			<h:form prependId="false" id="defaultForm">
+
+			
+				<p:dataTable id="rowEditingTable" var="message"
+					value="#{emdValidationMessages.fillTable()}" paginator="true" rows="5"
+					paginatorPosition="bottom"
+					filteredValue="#{emdValidationMessages.filteredMessages}"
+					editable="true">
+					<f:facet name="header">
+            Row Editing
+        </f:facet>
+
+					<p:column filterBy="#{message.subject}">
+						<f:facet name="header">
+							<h:outputText value="Subject" />
+						</f:facet>
+						<p:cellEditor>
+							<f:facet name="output">
+								<h:outputText value="#{message.subject}" />
+							</f:facet>
+							<f:facet name="input">
+								<p:inputText id="modelInput" value="#{message.subject}"
+									style="width:96%" />
+							</f:facet>
+						</p:cellEditor>
+					</p:column>
+					<p:column filterBy="#{message.text}">
+						<f:facet name="header">
+							<h:outputText value="Text" />
+						</f:facet>
+						<p:cellEditor>
+							<f:facet name="output">
+								<h:outputText value="#{message.text}" />
+							</f:facet>
+							<f:facet name="input">
+								<p:inputText value="#{message.text}" style="width:96%" />
+							</f:facet>
+						</p:cellEditor>
+					</p:column>
+					<p:column filterBy="#{message.time}">
+						<f:facet name="header">
+							<h:outputText value="Time" />
+						</f:facet>
+						<p:cellEditor>
+							<f:facet name="output">
+								<h:outputText value="#{message.time}" />
+							</f:facet>
+							<f:facet name="input">
+								<p:inputText value="#{message.time}" style="width:96%" />
+							</f:facet>
+						</p:cellEditor>
+					</p:column>
+					<p:column filterBy="#{message.state}">
+						<f:facet name="header">
+							<h:outputText value="State" />
+						</f:facet>
+						<p:cellEditor>
+							<f:facet name="output">
+								<h:outputText value="#{message.state}" />
+							</f:facet>
+							<f:facet name="input">
+								<p:selectOneMenu value="#{message.state}" style="width:100%">
+									<f:selectItems value="#{emdValidationMessages.states}"
+										var="state" itemLabel="#{state}" itemValue="#{state}" />
+								</p:selectOneMenu>
+							</f:facet>
+						</p:cellEditor>
+					</p:column>
+					<p:column style="width:6%" exportable="false">
+						<p:rowEditor />
+					</p:column>
+				</p:dataTable>
+
+				<p:spacer height="20" />
+
+				<p:panel header="Export PDF and Excel">
+					<p:commandLink id="pdf1" ajax="false">
+						<p:graphicImage value="/resources/img/pdf.png" />
+						<f:setPropertyActionListener value="false"
+							target="#{exporterController.customExporter}" />
+						<pe:exporter type="pdf" target="rowEditingTable"
+							fileName="RowEditableTable" cellFontColor="#80AAFF"
+							facetBackground="#008000" facetFontColor="#FFFFFF" />
+
+					</p:commandLink>
+
+					<p:spacer height="20" />
+
+					<p:commandLink id="xls1" ajax="false">
+						<p:graphicImage value="/resources/img/excel.png" />
+						<f:setPropertyActionListener value="false"
+							target="#{exporterController.customExporter}" />
+						<pe:exporter type="xlsx" target="rowEditingTable"
+							fileName="RowEditableTable" />
+
+					</p:commandLink>
+
+				</p:panel>
+			</h:form>
+		</p:panel>
+	</ui:define>
+</ui:composition>

@@ -1,2 +1,8 @@
-/build/
-/target/
+.classpath
+.project
+.settings
+bin/
+target/
+.svn/
+.metadata/
+*.log
